@@ -8,28 +8,58 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
+      success: resLogin => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
-          method: "post",
-          data: {
-            Id: "ba1e0da8-6adf-489a-9a13-12627c011a66",
-            Code: res.code
+        wx.getStorage({
+          key: 'Id',
+          success: function (resSaved) {
+            wx.request({
+              url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
+              method: "post",
+              data: {
+                Id: resSaved.data,
+                Code: resLogin.code
+              },
+              success: function (resSucess) {
+                console.log(resSucess.data);
+                wx.showLoading({
+                  title: resSucess.data.ErrMsg,
+                });
+                if (resSucess.data.ErrCode == 0 && resSucess.data.Data != resSaved.data) {
+                  wx.setStorage({
+                    key: 'Id',
+                    data: resSucess.data.Data,
+                  });
+                }
+              },
+              fail: function (resFail) {
+                console.log(resFail);
+              }
+            });
           },
-          success: function(res){
-            console.log(res.data);
-            if(res.data.ErrCode == 0){
-              wx.setStorage({
-                key: 'Id',
-                data: res.data.Data,
-              });
-            }
-          },
-          fail: function(res){
-            console.log(res);
+          fail: function(){
+            wx.request({
+              url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
+              method: "post",
+              data: {
+                Code: resLogin.code
+              },
+              success: function (resSucess) {
+                console.log(resSucess.data);
+                wx.showLoading({
+                  title: resSucess.data.ErrMsg,
+                });
+                wx.setStorage({
+                  key: 'Id',
+                  data: resSucess.data.Data,
+                });
+              },
+              fail: function (resFail) {
+                console.log(resFail);
+              }
+            });
           }
-        })
+        });
       }
     })
     // 获取用户信息
