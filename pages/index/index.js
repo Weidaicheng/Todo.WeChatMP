@@ -15,6 +15,9 @@ Page({
       url: '../logs/logs'
     })
   },
+  bindTextTap: function(){
+    app.getUserId();
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

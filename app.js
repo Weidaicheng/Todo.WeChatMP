@@ -1,12 +1,7 @@
 //app.js
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
+  //登录获取UserId
+  getUserId: function () {
     wx.getStorage({
       key: 'UserId',
       success: function (resSaved) {
@@ -23,11 +18,11 @@ App({
           success: function (resSucess) {
             //服务器请求成功
             console.log("服务器请求成功");
-            if(resSucess.data.ErrCode == 0){
+            if (resSucess.data.ErrCode == 0) {
               //UserId未过期，继续执行操作
               console.log("UserId未过期，继续执行操作");
             }
-            else{
+            else {
               //UserId过期，重新登录，重新获取UserId
               console.log("UserId过期，重新登陆，重新获取UserId");
               wx.login({
@@ -83,7 +78,7 @@ App({
               success: function (resSucess) {
                 //服务器请求成功
                 console.log("服务器请求成功");
-                if(resSucess.data.ErrCode == 0){
+                if (resSucess.data.ErrCode == 0) {
                   //获取UserId成功
                   console.log("获取UserId成功");
                   //保存UserId
@@ -103,7 +98,16 @@ App({
         });
       }
     });
+  },
+
+  onLaunch: function () {
+    // 展示本地存储能力
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs);
     
+    this.getUserId();
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -123,9 +127,9 @@ App({
           })
         }
       }
-    })
+    });
   },
   globalData: {
     userInfo: null
-  }
-})
+  },
+});
