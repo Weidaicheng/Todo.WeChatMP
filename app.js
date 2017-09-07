@@ -13,7 +13,7 @@ App({
           url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
           method: "post",
           data: {
-            Id: resSaved.data
+            UserId: resSaved.data
           },
           success: function (resSucess) {
             //服务器请求成功
