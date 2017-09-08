@@ -22,7 +22,7 @@ App({
               if (resSucess.data.ErrCode == 0) {
                 //UserId未过期，继续执行操作
                 console.log("UserId未过期，继续执行操作");
-                resolve();
+                resolve(resSaved.data);
               }
               else {
                 //UserId过期，重新登录，重新获取UserId
@@ -47,7 +47,7 @@ App({
                             key: 'UserId',
                             data: resSucess.data.Data,
                           });
-                          resolve();
+                          resolve(resSucess.data.Data);
                         }
                         else{
                           reject(resSucess.data.ErrMsg);
@@ -95,7 +95,7 @@ App({
                       key: 'UserId',
                       data: resSucess.data.Data,
                     });
-                    resolve();
+                    resolve(resSucess.data.Data);
                   }
                   else {
                     reject(resSucess.data.ErrMsg);
@@ -120,10 +120,11 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
     
+    //调用登录方法获取用户Id
     this.getUserId().then(function(result){
-      console.log("login success");
+      console.log("login success: " + result);
     }, function(err){
-      console.log("login fail");
+      console.log("login fail: " + err);
     });
 
     // 获取用户信息
