@@ -1,3 +1,5 @@
+var config = require('./config');
+
 //app.js
 App({
   //登录获取UserId
@@ -11,7 +13,7 @@ App({
           //验证UserId是否过期
           console.log("验证UserId是否过期");
           wx.request({
-            url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
+            url: config.loginService.loginUrl,
             method: "post",
             data: {
               UserId: resSaved.data
@@ -30,7 +32,7 @@ App({
                 wx.login({
                   success: resLogin => {
                     wx.request({
-                      url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
+                      url: config.loginService.loginUrl,
                       method: "post",
                       data: {
                         Code: resLogin.code
@@ -78,7 +80,7 @@ App({
           wx.login({
             success: resLogin => {
               wx.request({
-                url: 'https://89286074.qcloud.la/api/WeChatLogin/Login',
+                url: config.loginService.loginUrl,
                 method: "post",
                 data: {
                   Code: resLogin.code
