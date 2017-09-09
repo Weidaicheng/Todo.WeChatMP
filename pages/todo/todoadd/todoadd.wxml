@@ -1,0 +1,34 @@
+<view class="popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>  
+<form bindsubmit="formSubmit">
+    <scroll-view style="width:100%; height:100%;">
+        <view style='margin-top:10rpx; margin-left: 20rpx; margin-right: 20rpx;'>
+            <text>标题：</text>
+            <input name="todoTitle" placeholder='请输入标题' style='height:70rpx; width:100%;background-color:white;'></input>
+        </view>
+        <view style='margin-top:40rpx; margin-left: 20rpx; margin-right: 20rpx;'>
+            <text>内容：</text>
+            <textarea name="todoContent" placeholder='请输入内容' 
+                style='height: 400rpx; width: 100%; background-color:white;'></textarea>
+        </view>
+        <view style='margin-top:40rpx; margin-left: 20rpx;'>
+            <switch name="useAlert" checked='{{false}}' bindchange='useAlertChange'>开启提醒</switch>
+        </view>
+        <view style='margin-top:40rpx; margin-left: 20rpx; margin-right: 20rpx; display: {{alertTimeDisplay}}'>
+            <picker name="todoDate" mode="date" value='{{todoDate}}' start="{{todoDate}}" bindchange='todoDateChange'>
+                <view>
+                    提醒日期：<text>{{todoDate}}</text>
+                </view>
+            </picker>
+            <picker name="todoTime" mode="time" value='{{todoTime}}' bindchange='todoTimeChange'>
+                <view>
+                    提醒时间：<text>{{todoTime}}</text>
+                </view>
+            </picker>
+            <text>提前提醒时间（分钟）：</text>
+            <slider name="alertTime" show-value='{{true}}' min='0' max='60' value='5'></slider>
+        </view>
+    </scroll-view>
+    <view class='footer'>
+        <button type='primary' form-type='submit'>保存</button>
+    </view>
+</form>

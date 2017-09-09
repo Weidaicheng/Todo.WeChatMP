@@ -1,0 +1,98 @@
+<scroll-view scroll-y="true" class="root">
+    <view class="line">
+        <text class='title'>今天</text>
+        <view class="line-control">
+            <view class="item">
+                <view class="item-inner">
+                    <checkbox class='checkbox'></checkbox>
+                    <text>除草<text class='text-right'>16:30</text>
+                    </text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <checkbox class='checkbox'></checkbox>
+                    <text>洗衣服<text class='text-right'>16:30</text>
+                    </text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="line">
+        <text class='title'>这一周</text>
+        <view class="line-control">
+            <view class="item">
+                <view class="item-inner">
+                    <checkbox class='checkbox'></checkbox>
+                    <text>除草<text class='text-right'>16:30</text>
+                    </text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <checkbox class='checkbox'></checkbox>
+                    <text>洗衣服<text class='text-right'>16:30</text>
+                    </text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="line">
+        <text class='title'>已完成</text>
+        <view class="line-control">
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>洗衣服</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="item-inner">
+                    <text class='text-finished'>除草</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view class='footer'>
+    <button type='primary' bindtap='addTodo'>新建Todo</button>
+</view>

@@ -42,7 +42,7 @@ Page({
 
     setTimeout(function(){
       wx.navigateTo({
-        url: '../todo/index/index',
+          url: '../todo/todolist/todolist',
       });
     }, 3000);
   },
