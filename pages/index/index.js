@@ -39,6 +39,12 @@ Page({
         }
       })
     }
+
+    setTimeout(function(){
+      wx.navigateTo({
+        url: '../todo/index',
+      });
+    }, 3000);
   },
   getUserInfo: function(e) {
     console.log(e)
