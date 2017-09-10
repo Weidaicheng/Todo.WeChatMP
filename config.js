@@ -1,10 +1,9 @@
 var host = "89286074.qcloud.la";
-var loginHost = host + "/Login/api";
-var todoHost = host + "/Todo/api";
+var apiHost = host + "/api";
 
 var config = {
   loginService: {
-    loginUrl: `https://${loginHost}/WeChatLogin/Login`
+    loginUrl: `https://${apiHost}/WeChatLogin/Login`
   }
 };
 
