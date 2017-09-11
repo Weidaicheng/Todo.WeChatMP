@@ -107,6 +107,7 @@ Page({
      */
     formSubmit: function (e) {
         console.log(e.detail.value);
+        console.log(e.detail.formId);
         this.showErrorMessage("内容不能为空");
     },
 
