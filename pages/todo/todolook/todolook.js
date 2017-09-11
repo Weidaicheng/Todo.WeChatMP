@@ -1,18 +1,22 @@
-// pages/todo/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        todoTitle: "标题",
+        todoContent: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+        alertTimeDisplay: "",
+        todoDate: "2017-09-11",
+        todoTime: "20:52",
+        alertTime: "5"
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(options.todoId);
     },
 
     /**
@@ -63,22 +67,4 @@ Page({
     onShareAppMessage: function () {
 
     },
-
-    /**
-     * 新建Todo
-     */
-    addTodo: function(){
-        wx.navigateTo({
-            url: '../todoadd/todoadd',
-        });
-    },
-
-    /**
-     * 查看已完成Todo
-     */
-    showTodoLook: function(e){
-        wx.navigateTo({
-            url: '../todolook/todolook?todoId=' + "123",
-        });
-    }
 })

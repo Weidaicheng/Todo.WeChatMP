@@ -40,52 +40,52 @@
     <view class="line">
         <text class='title'>已完成</text>
         <view class="line-control">
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>洗衣服</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>
             </view>
-            <view class="item">
+            <view class="item" bindtap='showTodoLook'>
                 <view class="item-inner">
                     <text class='text-finished'>除草</text>
                 </view>

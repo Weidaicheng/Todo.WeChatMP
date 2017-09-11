@@ -1,8 +1,9 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/todo/todolist/todolist",
         "pages/todo/todoadd/todoadd",
-        "pages/todo/todolist/todolist"
+        "pages/todo/todolook/todolook"
     ],
     "window": {
         "backgroundTextStyle": "light",

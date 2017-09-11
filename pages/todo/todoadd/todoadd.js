@@ -7,8 +7,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        alertTimeDisplay: "none",
+        todoTitleStr: "",
+        todoContentStr: "",
+        useAlertChecked: true,
+        alertTimeDisplay: "",
         todoDate: utils.formatDate(new Date()),
+        todoDateEnd: null,
         todoTime: utils.formatTime(new Date())
     },
 
