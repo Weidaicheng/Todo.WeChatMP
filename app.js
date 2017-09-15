@@ -2,33 +2,33 @@ var config = require('./config');
 
 //app.js
 App({
-  //登录获取UserId
-  getUserId: function () {
+  //登录获取Token
+  getToken: function () {
     return new Promise(function(resolve, reject){
       wx.getStorage({
-        key: 'UserId',
+        key: 'Token',
         success: function (resSaved) {
-          //读取UserId成功
-          console.log("读取UserId成功");
-          //验证UserId是否过期
-          console.log("验证UserId是否过期");
+          //读取Token成功
+          console.log("读取Token成功");
+          //验证Token是否过期
+          console.log("验证Token是否过期");
           wx.request({
             url: config.loginService.loginUrl,
             method: "post",
             data: {
-              UserId: resSaved.data
+              Token: resSaved.data
             },
             success: function (resSucess) {
               //服务器请求成功
               console.log("服务器请求成功");
               if (resSucess.data.ErrCode == 0) {
-                //UserId未过期，继续执行操作
-                console.log("UserId未过期，继续执行操作");
+                //Token未过期，继续执行操作
+                console.log("Token未过期，继续执行操作");
                 resolve(resSaved.data);
               }
               else {
-                //UserId过期，重新登录，重新获取UserId
-                console.log("UserId过期，重新登陆，重新获取UserId");
+                //Token过期，重新登录，重新获取Token
+                console.log("Token过期，重新登陆，重新获取Token");
                 wx.login({
                   success: resLogin => {
                     wx.request({
@@ -41,12 +41,12 @@ App({
                         //服务器请求成功
                         console.log("服务器请求成功");
                         if (resSucess.data.ErrCode == 0) {
-                          //获取UserId成功
-                          console.log("获取UserId成功");
-                          //保存UserId
-                          console.log("保存UserId");
+                          //获取Token成功
+                          console.log("获取Token成功");
+                          //保存Token
+                          console.log("保存Token");
                           wx.setStorage({
-                            key: 'UserId',
+                            key: 'Token',
                             data: resSucess.data.Data,
                           });
                           resolve(resSucess.data.Data);
@@ -73,10 +73,10 @@ App({
           });
         },
         fail: function () {
-          //读取UserId失败
-          console.log("读取UserId失败");
-          //重新登录，获取UserId
-          console.log("重新登录，获取UserId");
+          //读取Token失败
+          console.log("读取Token失败");
+          //重新登录，获取Token
+          console.log("重新登录，获取Token");
           wx.login({
             success: resLogin => {
               wx.request({
@@ -89,12 +89,12 @@ App({
                   //服务器请求成功
                   console.log("服务器请求成功");
                   if (resSucess.data.ErrCode == 0) {
-                    //获取UserId成功
-                    console.log("获取UserId成功");
-                    //保存UserId
-                    console.log("保存UserId");
+                    //获取Token成功
+                    console.log("获取Token成功");
+                    //保存Token
+                    console.log("保存Token");
                     wx.setStorage({
-                      key: 'UserId',
+                      key: 'Token',
                       data: resSucess.data.Data,
                     });
                     resolve(resSucess.data.Data);
@@ -119,7 +119,7 @@ App({
   onLaunch: function () {
     
     //调用登录方法获取用户Id
-    this.getUserId().then(function(result){
+    this.getToken().then(function(result){
       console.log("login success: " + result);
     }, function(err){
       console.log("login fail: " + err);
