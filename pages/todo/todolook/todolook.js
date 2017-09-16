@@ -1,15 +1,17 @@
+var config = require("../../../config");
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        todoTitle: "标题",
-        todoContent: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+        todoTitle: "",
+        todoContent: "",
         alertTimeDisplay: "",
-        todoDate: "2017-09-11",
-        todoTime: "20:52",
-        alertTime: "5"
+        todoDate: "",
+        todoTime: "",
+        alertTime: ""
     },
 
     /**
@@ -17,6 +19,31 @@ Page({
      */
     onLoad: function (options) {
         console.log(options.todoId);
+
+        if(options.todoId){
+            var that = this;
+            wx.request({
+                url: config.todoService.getTodo,
+                method: "post",
+                data: {
+                    Token: wx.getStorageSync("Token"),
+                    TodoId: options.todoId
+                },
+                success: function (res) {
+                    console.log(res.data);
+                    if(res.data.ErrCode == 0){
+                        that.setData({
+                            todoTitle: res.data.Data.Title,
+                            todoContent: res.data.Data.Content,
+                            alertTimeDisplay: res.data.Data.UseAlert ? "" : "none",
+                            todoDate: res.data.Data.AlertDate,
+                            todoTime: res.data.Data.AlertTime,
+                            alertTime: res.data.Data.AlertBeforeMinutes
+                        });
+                    }
+                }
+            });
+        }
     },
 
     /**

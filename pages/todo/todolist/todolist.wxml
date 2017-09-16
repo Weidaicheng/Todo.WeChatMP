@@ -1,93 +1,73 @@
 <scroll-view scroll-y="true" class="root">
-    <view class="line">
-        <text class='title'>今天</text>
-        <view class="line-control">
-            <view class="item">
-                <view class="item-inner">
-                    <checkbox class='checkbox'></checkbox>
-                    <text>除草<text class='text-right'>16:30</text>
-                    </text>
-                </view>
-            </view>
-            <view class="item">
-                <view class="item-inner">
-                    <checkbox class='checkbox'></checkbox>
-                    <text>洗衣服<text class='text-right'>16:30</text>
-                    </text>
+    <!--今天-->
+    <view wx:if="{{hasTodayTodos}}">
+        <view class="line">
+            <text class='title'>今天</text>
+            <view class="line-control">
+                <view class="item" wx:for="{{todayTodos}}" wx:key="item">
+                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                        </text>
+                    </view>
                 </view>
             </view>
         </view>
     </view>
-    <view class="line">
-        <text class='title'>这一周</text>
-        <view class="line-control">
-            <view class="item">
-                <view class="item-inner">
-                    <checkbox class='checkbox'></checkbox>
-                    <text>除草<text class='text-right'>16:30</text>
-                    </text>
-                </view>
-            </view>
-            <view class="item">
-                <view class="item-inner">
-                    <checkbox class='checkbox'></checkbox>
-                    <text>洗衣服<text class='text-right'>16:30</text>
-                    </text>
+    <!--近三天-->
+    <view wx:if="{{hasTdayTodos}}">
+        <view class="line">
+            <text class='title'>近三天</text>
+            <view class="line-control">
+                <view class="item" wx:for="{{tdayTodos}}" wx:key="item">
+                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                        </text>
+                    </view>
                 </view>
             </view>
         </view>
     </view>
-    <view class="line">
-        <text class='title'>已完成</text>
-        <view class="line-control">
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
+    <!--一周内-->
+    <view wx:if="{{hasWeekTodos}}">
+        <view class="line">
+            <text class='title'>这一周</text>
+            <view class="line-control">
+                <view class="item" wx:for="{{weekTodos}}" wx:key="item">
+                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                        </text>
+                    </view>
                 </view>
             </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>洗衣服</text>
+        </view>
+    </view>
+    <!--七天之后，包括没有提醒时间-->
+    <view wx:if="{{hasAfweekTodos}}">
+        <view class="line">
+            <text class='title'>更多</text>
+            <view class="line-control">
+                <view class="item" wx:for="{{afweekTodos}}" wx:key="item">
+                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-id='{{item.TodoId}}'  catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                        </text>
+                    </view>
                 </view>
             </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
-                </view>
-            </view>
-            <view class="item" bindtap='showTodoLook'>
-                <view class="item-inner">
-                    <text class='text-finished'>除草</text>
+        </view>
+    </view>
+    <!--已完成-->
+    <view wx:if="{{hasDoneTodos}}">
+        <view class="line">
+            <text class='title'>已完成</text>
+            <view class="line-control">
+                <view class="item" wx:for="{{doneTodos}}" wx:key="item">
+                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoLook'>
+                        <text class='text-finished'>{{item.Title}}</text>
+                    </view>
                 </view>
             </view>
         </view>

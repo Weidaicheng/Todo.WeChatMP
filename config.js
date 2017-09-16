@@ -11,10 +11,11 @@ var config = {
     getThreeDayTodos: `https://${todoHost}/Todo/GetThreeDayTodos`,
     getSevenDayTodos: `https://${todoHost}/Todo/GetSevenDayTodos`,
     getAfterSevenDayTodos: `https://${todoHost}/Todo/GetAfterSevenDayTodos`,
-    getExpiredTodos: `https://${todoHost}/Todo/GetExpiredTodos`,
+    getDoneTodos: `https://${todoHost}/Todo/GetDoneTodos`,
     getTodo: `https://${todoHost}/Todo/GetTodo`,
     saveTodo: `https://${todoHost}/Todo/SaveTodo`,
-    deleteTodo: `https://${todoHost}/Todo/DeleteTodo`
+    deleteTodo: `https://${todoHost}/Todo/DeleteTodo`,
+    setDone: `https://${todoHost}/Todo/SetDone`
   }
 };
 

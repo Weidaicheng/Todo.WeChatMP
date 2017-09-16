@@ -113,7 +113,11 @@ Page({
     formSubmit: function (e) {
         console.log(e.detail.value);
         console.log(e.detail.formId);
-        //this.showErrorMessage("内容不能为空");
+        
+        if(e.detail.value.todoTitle == ""){
+            this.showErrorMessage("标题不能为空");
+            return;
+        }
 
         wx.request({
             url: config.todoService.saveTodo,
