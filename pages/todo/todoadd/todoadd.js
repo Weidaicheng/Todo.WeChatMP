@@ -1,5 +1,6 @@
 // pages/todo/todoadd/todoadd.js
 var utils = require("../../../utils/util");
+var config = require('../../../config');
 
 Page({
 
@@ -112,7 +113,35 @@ Page({
     formSubmit: function (e) {
         console.log(e.detail.value);
         console.log(e.detail.formId);
-        this.showErrorMessage("内容不能为空");
+        //this.showErrorMessage("内容不能为空");
+
+        wx.request({
+            url: config.todoService.saveTodo,
+            method: "post",
+            data: {
+                Title: e.detail.value.todoTitle,
+                Content: e.detail.value.todoContent,
+                UseAlert: e.detail.value.useAlert,
+                AlertTime: e.detail.value.todoDate + " " + e.detail.value.todoTime,
+                AlertBeforeMinutes: e.detail.value.alertTime,
+                Token: wx.getStorageSync("Token"),
+                FormId: e.detail.formId
+            },
+            success: function(res){
+                if(res.data.ErrCode == 0){
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 2000,
+                        success: function(){
+                            wx.navigateTo({
+                                url: '../todolist/todolist',
+                            });
+                        }
+                    });
+                }
+            }
+        })
     },
 
     /**
