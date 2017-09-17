@@ -5,8 +5,8 @@
             <text class='title'>今天</text>
             <view class="line-control">
                 <view class="item" wx:for="{{todayTodos}}" wx:key="item">
-                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
-                        <checkbox class='checkbox' data-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
+                    <view class="item-inner" data-todo-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-todo-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
                         <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
                         </text>
                     </view>
@@ -20,9 +20,9 @@
             <text class='title'>近三天</text>
             <view class="line-control">
                 <view class="item" wx:for="{{tdayTodos}}" wx:key="item">
-                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
-                        <checkbox class='checkbox' data-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
-                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                    <view class="item-inner" data-todo-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-todo-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertDate}} {{item.AlertTime}}</text>
                         </text>
                     </view>
                 </view>
@@ -35,9 +35,9 @@
             <text class='title'>这一周</text>
             <view class="line-control">
                 <view class="item" wx:for="{{weekTodos}}" wx:key="item">
-                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
-                        <checkbox class='checkbox' data-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
-                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                    <view class="item-inner" data-todo-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-todo-id='{{item.TodoId}}' catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertDate}} {{item.AlertTime}}</text>
                         </text>
                     </view>
                 </view>
@@ -50,9 +50,9 @@
             <text class='title'>更多</text>
             <view class="line-control">
                 <view class="item" wx:for="{{afweekTodos}}" wx:key="item">
-                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoEdit'>
-                        <checkbox class='checkbox' data-id='{{item.TodoId}}'  catchtap='setDone'></checkbox>
-                        <text>{{item.Title}}<text class='text-right'>{{item.AlertTime}}</text>
+                    <view class="item-inner" data-todo-id='{{item.TodoId}}' bindtap='showTodoEdit'>
+                        <checkbox class='checkbox' data-todo-id='{{item.TodoId}}'  catchtap='setDone'></checkbox>
+                        <text>{{item.Title}}<text class='text-right'>{{item.AlertDate}} {{item.AlertTime}}</text>
                         </text>
                     </view>
                 </view>
@@ -65,7 +65,7 @@
             <text class='title'>已完成</text>
             <view class="line-control">
                 <view class="item" wx:for="{{doneTodos}}" wx:key="item">
-                    <view class="item-inner" data-id='{{item.TodoId}}' bindtap='showTodoLook'>
+                    <view class="item-inner" data-todo-id='{{item.TodoId}}' bindtap='showTodoLook'>
                         <text class='text-finished'>{{item.Title}}</text>
                     </view>
                 </view>

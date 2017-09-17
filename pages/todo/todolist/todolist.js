@@ -220,8 +220,10 @@ Page({
      * 查看已完成Todo
      */
     showTodoLook: function(e){
+        // console.log("look:");
+        // console.log(e);
         wx.navigateTo({
-            url: '../todolook/todolook?todoId=' + e.target.dataset.id,
+            url: '../todolook/todolook?todoId=' + e.currentTarget.dataset.todoId,
         });
     },
 
@@ -229,8 +231,10 @@ Page({
      * 显示编辑
      */
     showTodoEdit: function(e){
+        // console.log("edit:");
+        // console.log(e);
         wx.navigateTo({
-            url: '../todoadd/todoadd?todoId=' + e.target.dataset.id,
+            url: '../todoadd/todoadd?todoId=' + e.currentTarget.dataset.todoId,
         })
     },
 
@@ -238,6 +242,9 @@ Page({
      * 设置完成
      */
     setDone: function(e){
+        // console.log("done:");
+        // console.log(e);
+
         var that = this;
 
         wx.request({
@@ -245,7 +252,7 @@ Page({
             method: "post",
             data: {
                 Token: wx.getStorageSync("Token"),
-                TodoId: e.target.dataset.id
+                TodoId: e.currentTarget.dataset.todoId
             },
             success: function(res){
                 if(res.data.ErrCode == 0){

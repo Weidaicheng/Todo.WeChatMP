@@ -8,20 +8,48 @@ Page({
      * 页面的初始数据
      */
     data: {
+        todoId: "",
         todoTitleStr: "",
         todoContentStr: "",
         useAlertChecked: true,
         alertTimeDisplay: "",
         todoDate: utils.formatDate(new Date()),
         todoDateEnd: null,
-        todoTime: utils.formatTime(new Date())
+        todoTime: utils.formatTime(new Date()),
+        alertTime: 5
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(options.todoId);
+        if(options.todoId){
+            var that = this;
+            wx.request({
+                url: config.todoService.getTodo,
+                method: "post",
+                data: {
+                    Token: wx.getStorageSync("Token"),
+                    TodoId: options.todoId
+                },
+                success: function (res) {
+                    console.log(res.data);
+                    if (res.data.ErrCode == 0) {
+                        that.setData({
+                            todoId: res.data.Data.TodoId,
+                            todoTitleStr: res.data.Data.Title,
+                            todoContentStr: res.data.Data.Content,
+                            useAlertChecked: res.data.Data.UseAlert,
+                            alertTimeDisplay: res.data.Data.UseAlert ? "" : "none",
+                            todoDate: res.data.Data.AlertDate,
+                            todoTime: res.data.Data.AlertTime,
+                            alertTime: res.data.Data.AlertBeforeMinutes
+                        });
+                    }
+                }
+            });
+        }
     },
 
     /**
@@ -111,18 +139,17 @@ Page({
      * 表单提交
      */
     formSubmit: function (e) {
-        console.log(e.detail.value);
-        console.log(e.detail.formId);
-        
         if(e.detail.value.todoTitle == ""){
             this.showErrorMessage("标题不能为空");
             return;
         }
 
+        var that = this;
         wx.request({
             url: config.todoService.saveTodo,
             method: "post",
             data: {
+                TodoId: that.data.todoId,
                 Title: e.detail.value.todoTitle,
                 Content: e.detail.value.todoContent,
                 UseAlert: e.detail.value.useAlert,

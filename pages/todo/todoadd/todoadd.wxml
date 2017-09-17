@@ -9,7 +9,7 @@
         <view style='margin-top:20rpx; margin-left: 20rpx; margin-right: 20rpx;'>
             <text class='title'>内容：</text>
             <textarea name="todoContent" placeholder='请输入内容' 
-                style='height: 400rpx; width: 100%; background-color:white;' value='{{todoContentStr}}'></textarea>
+                style='height: 400rpx; width: 100%; background-color:white; font-size: 30rpx;' value='{{todoContentStr}}'></textarea>
         </view>
         <view style='margin-top:20rpx; margin-left: 20rpx;'>
             <switch name="useAlert" checked='{{useAlertChecked}}' bindchange='useAlertChange' style='font-size:34rpx'>开启提醒</switch>
@@ -27,7 +27,8 @@
                 </view>
             </picker>
             <text class='title'>提前提醒时间（分钟）：</text>
-            <slider name="alertTime" show-value='{{true}}' min='0' max='60' value='5' style='width: 100%;margin-left:0;'></slider>
+            <slider name="alertTime" show-value='{{true}}' min='0' max='60' value='{{alertTime}}' 
+                style='width: 100%;margin-left:0;'></slider>
         </view>
     </view>
     <view class='footer'>
